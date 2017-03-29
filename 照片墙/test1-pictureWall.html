@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background: darkgrey;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .wall {
+            position: relative;
+            width: 90%;
+            height: 70%;
+            margin: 30px auto;
+        }
+        .pic {
+            position: absolute;
+            -webkit-transition: 1s;
+            background: white;
+        }
+        .pic img {
+            float: left;
+            width: 200px;
+            height: 250px;
+            display: block;
+            margin: 10px 10px 15px;
+        }
+        .num1 {
+            transform: rotate(-10deg);
+            z-index: -1;
+         }
+        .num2 {
+            margin-left: 225px;
+            transform: rotate(10deg);
+            z-index: -1;
+
+        }
+        .num3 {
+            margin-left: 455px;
+            transform: rotate(-15deg);
+            z-index: -1;
+
+        }
+        .num4 {
+            margin-left: 685px;
+            transform: rotate(-8deg);
+            z-index: -1;
+
+        }
+        .num5 {
+            margin-left: 915px;
+            transform: rotate(12deg);
+            z-index: -1;
+
+        }
+        .num6 {
+            margin-top: 285px;
+            transform: rotate(-3deg);
+            z-index: -1;
+
+        }
+        .num7 {
+            margin-left: 225px;
+            margin-top: 285px;
+            transform: rotate(15deg);
+            z-index: -1;
+
+        }
+        .num8 {
+            margin-left: 455px;
+            margin-top: 285px;
+            transform: rotate(15deg);
+            z-index: -1;
+
+        }
+        .num9 {
+            margin-left: 685px;
+            margin-top: 285px;
+            transform: rotate(-5deg);
+            z-index: -1;
+
+        }
+        .num10 {
+            margin-left: 915px;
+            margin-top: 285px;
+            transform: rotate(-18deg);
+            z-index: -1;
+
+        }
+        .pic:hover {
+            transform: rotate(0deg);
+            z-index: 2;
+            -webkit-transform: scale(1.5);
+            -webkit-box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+<h1>照片墙制作</h1>
+<div class="wall">
+    <div class="pic num1"><img src="../CSS%203/1.jpg" /></div>
+    <div class="pic num2"><img src="2.jpg" /></div>
+    <div class="pic num3"><img src="3.jpg" /></div>
+    <div class="pic num4"><img src="4.jpg" /></div>
+    <div class="pic num5"><img src="5.jpg" /></div>
+    <div class="pic num6"><img src="6.jpg" /></div>
+    <div class="pic num7"><img src="7.jpg" /></div>
+    <div class="pic num8"><img src="8.jpg" /></div>
+    <div class="pic num9"><img src="9.jpg" /></div>
+    <div class="pic num10"><img src="10.jpg" /></div>
+
+</div>
+</body>
+</html>
