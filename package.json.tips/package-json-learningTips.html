@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="GBK">
+    <meta charset="utf-8">
     <title>package-json-learningTips</title>
-    <style>
-    </style>
+	<link rel="stylesheet" href="common.css">
 </head>
 <body>
-	<div>
-		<h1>package-json-learningTips</h1>
+	<div id="header">
+			<h1>package-json-learningTips</h1>
+	</div>
+	<div id="main">
 		<h2>目录</h2>
-		<ul>
+		<div id="content">
+		<ol>
 			<li>概述</li>
 			<li>scripts字段</li>
 			<li>dependiencies字段，devDenpendencies字段</li>
@@ -18,8 +20,238 @@
 			<li>bin字段</li>
 			<li>main字段</li>
 			<li>config字段</li>
-			<li>其他</li>
-		</ul>
+			<li>其他
+				<ul start="1" >
+					<li>browser字段</li>
+					<li>engines字段</li>
+					<li>man字段</li>
+					<li>preferGlobal字段</li>
+					<li>style字段</li>
+				</ul>
+			</li>
+		</ol>
+		</div>
+		<h2>1.概述</h2>
+			<p>每个项目的根目录下面，一般都有一个<span>package.json</span>文件，定义了这个项目所需的各种模块，以及项目
+			配置信息（比如名称、版本、许可证等元数据）。<span>npm install</span>命令根据这个配置文件，自动下载
+			所需的模块，也就是配置项目所需的运行和开发环境。</p>
+			<p>下面是一个最简单的package.json文件，只定义两项元数据：项目名称和项目版本。</p>
+	<pre>
+		{ 
+			"name" : "xxx", 
+			"version" : "0.0.0",
+		}
+	</pre>
+			<p>上面代码说明，<span>package.json</span>文件内部就是一个JSON对象，该对象的每一个成员就是当前项目的一项设置。比如<span>name</span>
+			就是项目名称，<span>version</span>是版本（遵守”大版本、次要版本、小版本“的格式）。</p>
+			<p>下面是一个完整的package.json文件。</p>
+			<pre>
+			<code>
+				{
+					"name" : "Hello World",
+					"version" : "0.0.1",
+					"author" : "张三",
+					"description" : "第一个node.js程序",
+					"keywords" : ["node.js", "javascript"],
+					"repository" : {
+							"type" : "git",
+							"url" : "https://path/to/url"
+					},
+					"license" : "MIT",
+					"engines" : {"node" : "0.10.x"},
+					"bugs" : {"url" : "http://path/to/bug", "email" : "bug@example.com"},
+					"contributors" : [{"name" : "李四", "email" : "lisi@example.com"}],
+					"scripts" : {
+							"start" : "node index.js"
+					},
+					"devDependencies" : {
+							"bower" : "~1.2.8",
+							"grunt" : "~0.4.1",
+							"grunt-contrib-content" : "~0.3.0",
+							"grunt-contrib-jshint" : "~0.7.2",
+							"grunt-contrib-uglify" : "~0.2.7",
+							"grunt-contrib-clean" : "~0.5.0",
+							"browsefigy" : "2.36.1",
+							"grunt-browserify" : "~1.3.0",
+					}
+				}
+			</code>
+			</pre>
+			<p>下面详细解释package.json文件的各个字段。</p>
+			<h2>2.scripts字段</h2>
+			<p><span>scripts</span>指定了运行脚本命令的npm命令的缩写，比如start指定了运行<span>npm run start</span>时，
+			所要执行的命令。</p>
+			<p>下面的设置指定了<span>npm run preinstall</span>、<span>npm run postinstall</span>、<span>npm run start</span>，
+			<span>npm run test</span>时、所要执行的命令。</p>
+			<pre>
+			<code>
+				{
+					"scripts" : {
+						"preinstall" : "echo here it comes!",
+						"postinstall" : "echo there it goes!",
+						"start" : "node index.js",
+						"test" : "tap test/*.js"
+					}
+				}
+			</code>
+			</pre>
+			<h2>3.dependencies字段，devDependencies字段</h2>
+			<p><span>dependencies</span>字段指定了项目运行所依赖的模块，<span>devDependencies</span>指定项目开发所需要的模块。
+			它们都指向一个对象。该对象的各个成员，分别有模块和对应的版本要求组成，表示依赖的模块及其版本范围。</p>
+			<pre>
+			<code>
+				{
+					"devDependencies" : {
+						"browserify" : "~13.0.0",
+						"karma-browserify" : "~5.0.1"
+					}
+			
+				}
+			</code>
+			</pre>
+			<p>对应的版本可以加上各种限定，主要有以下几种：</p>
+			<div>
+				<ol>
+					<li><p><span>指定版本：</span>比如 <span>1.2.2</span>，遵循”大版本、次要版本、小版本“的格式规定，安装时只安装指定版本。</p></li>
+					<li><p><span>波浪号（tilde）+指定版本：</span>比如<span>~1.2.2</span>，表示安装1.2.x的最新版本（不低于1.2.2），但是不
+						安装1.3.x，也就是说安装时不改变大版本号和次要版本号。</p></li>
+					<li><p><span>插入号（caret）+指定版本：</span>比如^1.2.2，表示安装1.x.x的最新版本（不低于1.2.2），但是不安装2.x.x，也就是说安装时不改变大版本号。需要注意的是，如果大版本号为0，则插入号的行为与波浪号相同，这是因为此时处于开发阶段
+					，即使是次要版本号变动，也可能带来程序的不兼容。</p></li>
+					<li><p><span>latest:</span>安装最新版本。</p></li>
+				<ol>
+			</div>
+			<p>package.json文件可以手工编写，也可以<span>npm install</span>命令自动生成。</p>
+			
+			<pre>
+			<code>
+					$ npm init
+			</code>
+			</pre>
+			<p>这个命令采用互动方式，要求用户回答一些问题，然后在当前目录生成一个基本的package.json文件。
+			所有问题之中，只有项目名称（name）和项目版本（version）是必填的，其他都是选填的。</p>
+			<p>有了package.json文件，直接使用npm install命令，就会在当前目录中安装所需要的模块。</p>
+			<pre>
+			<code>
+					$ npm install
+			</code>
+			</pre>
+			<p>如果一个模块不在<span>package.json</span>文件中，可以单独安装这个模块，并使用相应的参数，将其写入<span>pacage.json</span>文件之中。</p>
+			<pre>
+			<code>
+					$ npm install express --save
+					$ npm install express --save-dev
+			</code>
+			</pre>
+			<P>上面代码表示单独安装express模块，<span>--save</span>参数表示将该模块写入<span>dependencies</span>属性，<span>--save-dev</span>
+			表示将该模块写入<span>devDenpendencies</span>属性。</P>
+			
+			<h2>4.peerDenpendencies</h2>
+			<p>有时，你的项目和所依赖的模块，都会同时依赖另一个模块，但是所依赖的版本不不一样。比如，你的项目依赖A模块和B模块的1.0版本，而A模块本身又依赖B模块的2.0版。</p>
+			<p>大多数情况下，这不构成问题，B模块的两个版本可以共存，同时运行。但是，有一种情况，会出现问题，就是这种依赖关系将会暴露给客户。</p>
+			<p>最典型的场景就是插件，比如A模块是B模块的插件。用户安装的B模块是1.0版本，但是A插件只能和2.0版本的B模块在一起使用。
+			这时，用户要将1.0版本的B的实例传给A，就会出现问题。因此，需要一种机制，在模块安装的时候提醒用户，如果A和B一起安装，那么B必须是2.0的模块。</p>
+			<p><span>peerDenpendencies</span>字段，就是用来供插件指定其所需要的主要工具的版本。</p>
+			<pre>
+			<code>
+				{
+					"name" : "chai-as-promised",
+					"peerDenpendencies" : {
+						"chai" : "1.x"
+					}
+				}
+			</code>
+			</pre>
+			<p>上面代码指定，安装<span>chai-as-promised</span>模块时，主程序<span>chai</span>必须一起安装，而且<span>chai</span>
+			的版本必须是1.x。如果你的项目指定的依赖是<span>chai</span>的2.0版本，就会报错。</p>
+			<p>注意，从npm 3.0开始，<span>peerDependencies</span>不会再默认安装了。</p>
+			
+			<h2>5.bin字段</h2>
+			<p>bin项用来指定各个内部命令对应的可执行文件的位置。</p>
+			<pre>
+			<code>
+				"bin" : {
+					"someTool" : "./bin/someTool.js"
+				}
+			</code>
+			</pre>
+			<p>上面代码指定，someTool命令对应的可执行文件为bin子目录下的someTool.js。npm会寻找这个文件，
+			在<span>node_modules/.bin/</span>目录下建立符号连接。在上面的例子中，someTool.js会建立符号连接<span>npm_modules/.bin/someTool</span>。由于<span>node_modules/.bin/</span>
+			目录会在运行时加入系统的PATH变量，因此在运行npm时，就可以不带路径，直接通过命令来调用这些脚本。</p>
+			<p>因此，像下面这样的写法可以采用简写。</p>
+			<pre>
+			<code>
+				scripts : {
+					start: './node_modules/someTool/someTool.js build'
+				}
+				
+				scripts : {
+					start : 'someTool build'
+				}
+			</code>
+			</pre>
+			<p>所以<span>node_modules/.bin/</span>目录下的命令，都可以用<span>npm run [命令]</span>的格式运行。
+			在命令行下，键入<span>npm run</span>，然后按Tab键，就会显示所有可以使用的命令。</p>
+			<h2>6.main字段</h2>
+			<p><span>main</span>字段指定了加载的入口文件，<span>require('noduleName')</span>就会加载这个文件。这个字段的默认值是模块根目录下面的<span>index.js</span>。</p>
+			<h2>7.config字段</h2>
+			<p>config字段用于向环境变量输出值。</p>
+			<p>下面是一个package.json文件。</p>
+			<pre>
+			<code>
+				{
+					"name" : "foo",
+					"config" : { "port" : "8080"},
+					"scripts" : { "start" : "node server.js"}
+				}
+			</code>
+			</pre>
+			<p>然后，在<span>server.js</span>脚本就可以引用config字段的值。</p>
+			<pre>
+			<code>
+				http.createServer(...).listen(process.env.npm_package_config_port)
+			</code>
+			</pre>
+			<p>用户可以改变这个值。</p>
+			<pre>
+			<code>
+				$ npm config set foo: port 80
+			</code>
+			</pre>
+			
+			<h2>8.其他</h2>
+			<h3>8.1 browser字段</h3>
+			<p>browser字段指定该模块供浏览器使用的版本。Browserify这样的浏览器打包工具，通过它就知道该打包哪个文件。</p>
+			<pre>
+			<code>
+				"browser" : {
+					"tipso" : "./node_modules/tipso/src/tipso.js"
+				},
+			</code>
+			</pre>
+			<h3>8.2 engines字段</h3>
+			<p>engines指明了该项目所需要的node.js版本。</p>
+			
+			<h3>8.3 man字段</h3>
+			<p>man用来指定当前模块的man文档的位置。</p>
+			<pre>
+			<code>
+				"man" : ["./doc/cal.1"]
+			</code>
+			</pre>
+			
+			<h3>8.4 preferGlobal字段</h3>
+			<p>preferGlobal的值是布尔值，表示当用户不将该模块安装为全局模块时（即不用-global参数），
+			要不要显示警告，表示该模块的本意就是安装为全局模块。</p>
+			
+			<h3>8.5 style字段</h3>
+			<p>style指定供浏览器使用时，样式文件所在的位置。样式文件打包工具parcelify，通过它知道样式文件的打包位置。</p>
+			<pre>
+			<code>
+				"style" : [
+					"./node_modules/tipso/src/tipso.css"
+				]
+			</code>
+			</pre>
 	</div>
 	
 
