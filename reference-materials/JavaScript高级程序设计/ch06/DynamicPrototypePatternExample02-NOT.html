@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+	<html lang = "en">
+		<head>
+			<title>Dynamic Prototype Pattern Example 01</title>
+			<meta charset = "UTF-8">
+		</head>
+		<body>
+			<script>
+				var person = function(name, age, job) {
+					this.name = name;
+					this.age = age;
+					this.job = job;
+					
+/*					if (typeof this.sayName != "function") {
+							person.prototype.sayName = function() {
+							alert(this.name);
+						};
+					}
+*/
+				}
+
+				if (typeof person.sayName != "function") {
+					person.sayName = function() {
+						alert(this.name);
+					};
+				}
+				alert(typeof person.sayName);
+				
+				var per = new person("Nichaloas", 27, "Engineer");
+//				per.prototype = person();
+				
+				per.sayName();//输出错误；per.sayName() is not a function
+				
+				
+			</script>
+		</body>
+	</html>

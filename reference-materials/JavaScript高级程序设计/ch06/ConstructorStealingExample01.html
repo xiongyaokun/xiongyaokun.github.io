@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+	<html lang = "en">
+		<head>
+			<title>Constructor Stealing Example 01</title>
+			<meta charset = "UTF-8">
+		</head>
+		<body>
+			<script>
+				function superType() {
+					this.colors = ["red", "blue", "yellow"];
+				};
+				function subType() {
+					superType.call(this);
+				}
+				var ins1 = new subType();
+				ins1.colors.push("black");
+				alert(ins1.colors);
+				
+				var ins2 = new subType();
+				alert(ins2.colors);
+			</script>
+		</body>
+	</html>

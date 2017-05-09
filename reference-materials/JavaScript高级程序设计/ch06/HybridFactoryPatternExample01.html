@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+	<html lang = "en">
+		<head>
+			<meta http-equiv="content-type" content="utf-8">
+			<title>Get Property Descriptor Example 01</title>
+		</head>
+		<body>
+			<script>
+				function specialArray() {
+					var values = new Array();
+					values.push.apply(values, arguments);
+					values.toPipedString = function() {
+						return this.join("|");
+					};
+					return values;
+				}
+				var arr = new specialArray("red", "blue", "yellow");
+				alert(arr.toPipedString());
+				alert(arr instanceof specialArray);
+				alert(typeof arr);
+				alert(arr.constructor);
+			</script>
+		</body>
+	</html>

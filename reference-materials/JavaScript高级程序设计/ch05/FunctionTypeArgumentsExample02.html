@@ -1,0 +1,19 @@
+<DOCTYPE html>
+	<html>
+		<head>
+			<title>Array Type Arguments Example 02</title>
+		</head>
+		<body>
+			<script>
+				function add (n) {
+					if (n<=0) {
+						return 0;
+					}else {
+						return n + arguments.callee(n-1);
+					}
+				}
+				
+				alert(add(6));
+			</script>
+		</body>
+	</html>

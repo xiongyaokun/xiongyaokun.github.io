@@ -1,0 +1,34 @@
+<DOCTYPE html>
+	<html>
+		<head>
+			<title>Array Type Example 08</title>
+		</head>
+		<body>
+			<script type = "text/javascript">
+				var person1 = {
+						toLocaleString : function () {
+								return "Nikolaos";
+							},
+						toString : function () {
+								return "Nicholas";
+							}
+					};
+				var person2 = {
+						toLocaleString : function () {
+								return "Grigolrios";
+							},
+						toString : function () {
+								return "Greg";
+							}
+					};
+					
+				var person = [person1, person2];
+				alert("\"The alert(person)\" is " + person +"\n" +
+						"\"The alert(person.toString)\" is " + person.toString() + "\n" +
+						"\"The alert(person.toLocaleString)\" is " + person.toLocaleString() + "\n");
+//				alert(person);
+//				alert(person1);
+//				alert(person2);
+			</script>
+		</body>
+	</html>

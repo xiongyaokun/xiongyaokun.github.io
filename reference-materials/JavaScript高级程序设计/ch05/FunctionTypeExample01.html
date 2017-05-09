@@ -1,0 +1,19 @@
+<DOCTYPE html>
+	<html>
+		<head>
+			<title>Array Type Example 01</title>
+		</head>
+		<body>
+			<script>
+				function sum (num1, num2) {
+					return num1 + num2;
+				}
+				alert(sum(10,10));
+				var anotherSum = sum;
+				alert(anotherSum(20,20));
+				sum = null;
+//				alert(sum(10,10));
+				alert(anotherSum(20,20));				
+			</script>
+		</body>
+	</html>

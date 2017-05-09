@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+	<html lang = "en">
+		<head>
+			<title>Object Type Example 04</title>
+			<meta charset = "UTF-8">
+		</head>
+		<body>
+			<script>
+				var messa = "";
+				function showMessa(object) {
+					if (typeof object.name == "string") {
+						messa +=object.name;
+					}
+					if (typeof object.age =="number") {
+						messa +=object.age;
+					}
+					return messa;
+				}
+				alert(showMessa({name: "Nichalosa", age: 28}));
+			</script>
+		</body>
+	</html>

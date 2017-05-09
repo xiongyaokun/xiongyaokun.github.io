@@ -1,0 +1,20 @@
+<DOCTYPE html>
+	<html>
+		<head>
+			<title>Array Type Call() Example 01</title>
+		</head>
+		<body>
+			<script>
+				window.color = "red";
+				var o = {color: "blue"};
+				function sayColor () {
+					alert(this.color);
+				}
+				sayColor();
+				
+				sayColor.call(window);
+				sayColor.call(this);
+				sayColor.call(o);
+			</script>
+		</body>
+	</html>

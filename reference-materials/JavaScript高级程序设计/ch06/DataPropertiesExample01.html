@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+	<html lang = "en">
+		<head>
+			<title>Constructor Stealing Example 01</title>
+			<meta charset = "UTF-8">
+		</head>
+		<body>
+			<script>
+				var person = {};
+				Object.defineProperty(person,"name", {
+					writable: false,
+					value: "Nichaloas"
+				});
+				Object.defineProperty(person, "sayName", {
+					function (){
+						alert(this.name);
+					}
+				});
+//				alert(person.name);
+//				person.name = "Jack";
+//				alert(person.name);
+				person.sayName();
+			</script>
+		</body>
+	</html>

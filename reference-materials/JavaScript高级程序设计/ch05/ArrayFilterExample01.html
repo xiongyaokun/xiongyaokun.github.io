@@ -1,0 +1,17 @@
+<DOCTYPE html>
+	<html>
+		<head>
+			<title>Array Filter Example 01</title>
+		</head>
+		<body>
+			<script>
+				var numbers = [1,2,3,4,5,4,3,2,1];
+				var filterResult = numbers.filter(
+					function (item,index,arry){
+						return (item>2);
+					}
+				)
+				alert(filterResult);
+			</script>
+		</body>
+	</html>

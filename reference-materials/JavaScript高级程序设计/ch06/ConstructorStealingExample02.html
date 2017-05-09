@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+	<html lang = "en">
+		<head>
+			<title>Constructor Stealing Example 02</title>
+			<meta charset = "UTF-8">
+		</head>
+		<body>
+			<script>
+				function superType(name) {
+					this.name = name;
+				}
+				function subType(name) {
+					superType.call(this, name);
+					this.color = "red";
+				}
+				var ins1 = new subType("Nichaloas");
+				alert(ins1.name);
+				alert(ins1.color);
+			</script>
+		</body>
+	</html>

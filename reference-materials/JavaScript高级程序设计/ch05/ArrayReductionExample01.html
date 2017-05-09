@@ -1,0 +1,26 @@
+<DOCTYPE html>
+	<html>
+		<head>
+			<title>Array Reduction Example 01</title>
+		</head>
+		<body>
+			<script>
+				var values = [1,2,3,4,5];
+				var sum = values.reduce(
+					function (pre,cur,index,arry) {
+//						var pre = 100;
+						return (pre + cur);
+					},10
+				)
+				alert(sum);
+				
+				var arr1 = [[1,2], [3,4], [5,6], [7,8]];
+				var arr1Sum = arr1.reduce(
+					function (a,b) {
+						return a.concat(b);
+					}
+				)
+				alert(arr1Sum);
+			</script>
+		</body>
+	</html>

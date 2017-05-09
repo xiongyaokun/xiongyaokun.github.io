@@ -1,0 +1,17 @@
+<DOCTYPE html>
+	<html>
+		<head>
+			<title>Array Map Example 01</title>
+		</head>
+		<body>
+			<script>
+				var numbers = [1,2,3,4,5,5,4,3,2,1];
+				var mapResult = numbers.map(
+					function (item,index,arry) {
+						return (item * 2);
+					}
+				)
+				alert(mapResult);
+			</script>
+		</body>
+	</html>

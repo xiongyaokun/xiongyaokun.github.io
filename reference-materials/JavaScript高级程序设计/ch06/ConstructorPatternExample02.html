@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+	<html lang = "en">
+		<head>
+			<title>Constructor Pattern Example 01</title>
+			<meta charset = "UTF-8">
+		</head>
+		<body>
+			<script>
+				function person(name, age, job) {
+					this.name = name;
+					this.age = age;
+					this.job = job;
+					this.resume = function() {
+						alert(this.name + "\'s job is " + this.job);
+					};
+				}
+//				var person1 = new Object {name: "Nicholas", age: 27, job: "teacher"};
+//				var person1 = {name: "Nicholas", age: 27, job: "teacher"};
+				var person1 = new Object;
+				person.call(person1, "Nicholas", 27, "teacher");
+//				person.call(person1);
+				alert(person1.name);
+				person1.resume();
+			</script>
+		</body>
+	</html>

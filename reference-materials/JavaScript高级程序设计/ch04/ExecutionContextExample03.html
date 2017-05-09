@@ -1,0 +1,20 @@
+<!	DOCTYPE html>
+	<html>
+		<head>
+			<title>Execution Context Example 03</title>
+		</head>
+		<body>
+			<script>
+				var qs = "?debug=true";
+				function buildUrl () {
+					with (location) {
+						var url = href + qs;
+						alert(href);
+					}
+					return url;
+				}
+				var result = buildUrl();
+				alert(result);
+			</script>
+		</body>
+	</html>

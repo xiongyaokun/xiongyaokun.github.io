@@ -1,0 +1,21 @@
+<DOCTYPE html>
+	<html lang = "en">
+		<head>
+			<title>Math Object Random Example 03</title>
+			<meta charset = "UTF-8">
+		</head>
+		<body>
+			<script>
+				function selectFrom(lowerNum,upperNum) {
+					var range = upperNum - lowerNum + 1;
+					return Math.floor(Math.random() * range) + lowerNum;
+				}
+				var result = selectFrom(2,10);
+//				alert(result);
+				
+				var colors = ["red", "blue", "yellow", "black", "green", "purple"];
+				var color = colors[selectFrom(0,colors.length-1)];
+				alert(color);
+			</script>
+		</body>
+	</html>

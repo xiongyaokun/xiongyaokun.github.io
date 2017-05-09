@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+	<html lang = "en">
+		<head>
+			<title>Constructor Pattern Example 01</title>
+			<meta charset = "UTF-8">
+		</head>
+		<body>
+			<script>
+				var person = function(name, age, job) {
+					this.name = name;
+					this.age = age;
+					this.job = job;
+					this.sayName = function() {
+						return this.name;
+					}
+					this.sayAge = function() {
+						return this.age;
+					}
+				};	
+				
+				var student = function(name, job) {
+					person.call(this, name, job);
+				};
+				var stu1 = new student("Lilei", "student");
+				alert(stu1.sayName());
+				alert(stu1.age);
+				alert(stu1.job);
+			</script>
+		</body>
+	</html>

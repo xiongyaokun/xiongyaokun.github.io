@@ -1,0 +1,24 @@
+<DOCTYPE html>
+	<html>
+		<head>
+			<title>Array Every and Some Example 01</title>
+		</head>
+		<body>
+			<script>
+				var numbers = [1,2,3,4,5,4,3,2,1];
+				var everyResult = numbers.every(
+					function (item,index,arry){
+						return (item>2);
+					}
+				)
+				alert(everyResult);
+				
+				var someResult = numbers.some(
+					function (item,index,arry) {
+						return (item>2);
+					}
+				)
+				alert(someResult);
+			</script>
+		</body>
+	</html>

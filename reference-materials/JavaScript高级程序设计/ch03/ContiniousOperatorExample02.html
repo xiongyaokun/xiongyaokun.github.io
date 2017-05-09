@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Continious Operator Example 02</title>
+		</head>
+		<body>
+			<script type = "text/javascript">
+				var num = 0;
+				
+				outmost:
+				for (i=0;i<10;i++) {
+					for (j=0;j<10;j++) {
+						if (i==5&&j==5) {
+//							console.log(i,j);
+							continue outmost;
+						}
+						console.log(i,j);
+						num++;
+					}
+//					num++;
+				}
+				alert(num);
+			</script>
+		</body>
+	</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+	<html lang = "en">
+		<head>
+			<title>Constructor Pattern Example 03</title>
+			<meta charset = "UTF-8">
+		</head>
+		<body>
+			<script>
+				function person(name, age, job) {
+					this.name = name;
+					this.age = age;
+					this.job = job;
+					this.sayName = sayName;
+				};
+				function sayName() {
+					alert(this.name);
+				};
+				var person1 = new person("Nichaloas", 27, "software enginner");
+				var person2 = new person("Jack", 26, "teacher");
+				
+				alert(person1.sayName == person2.sayName);
+				alert(person1.sayName() == person2.sayName());
+				person1.sayName();
+				person2.sayName();
+				
+				alert(typeof person1);
+				alert(typeof person2);
+				
+				alert(person1 instanceof Object);
+				alert(person1 instanceof person);
+				
+				alert(person1.constructor == person);
+				alert(person2.constructor);
+				
+			</script>
+		</body>
+	</html>

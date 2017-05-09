@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Execution Context Example 01</title>
+		</head>
+		<body>
+			<script>
+			var color = "black";
+			var color1 = "blue1";
+			function changeColor (color) {
+//				alert(typeof color);
+				if (color === "blue") {
+					color = "red";
+				}else {
+					alert(typeof color1);
+					color = "blue";
+				}
+//				alert("The inside color is " + color  + " now!");
+			}
+			changeColor(color);
+			alert("The outside color is " + color +" now!");
+			</script>
+		</body>
+	</html>

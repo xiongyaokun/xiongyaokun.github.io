@@ -1,0 +1,22 @@
+<!	DOCTYPE html>
+	<html>
+		<head>
+			<title>Execution Context Example 02</title>
+		</head>
+		<body>
+			<script>
+				var color = "blue";
+				function swapColor () {
+					var anotherColor = "red";
+					function changeColor () {
+						tempColor = anotherColor;
+						anotherColor = color;
+						color = tempColor;
+					}
+					changeColor();	
+				}
+				swapColor();
+				alert("Now the color is " + color +" !");
+			</script>
+		</body>
+	</html>

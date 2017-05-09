@@ -1,0 +1,21 @@
+<DOCTYPE html>
+	<html>
+		<head>
+			<title>Array Type Arguments Example 01</title>
+		</head>
+		<script>
+			window.color = "red";
+			var o = {color: "blue"};
+			function sayColor () {
+				alert(this.color);
+			}
+//			function objectSayColor () {
+//				return sayColor.bind(o);
+//			}
+			
+			var objectSayColor = sayColor.bind(o);
+			objectSayColor();
+		</script>
+		<body>
+		</body>
+	</html>

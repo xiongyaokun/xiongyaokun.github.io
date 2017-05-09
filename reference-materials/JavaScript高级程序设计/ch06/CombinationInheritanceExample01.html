@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+	<html lang = "en">
+		<head>
+			<title>Combinatio Inheritance Example 01</title>
+			<meta charset = "UTF-8">
+		</head>
+		<body>
+			<script>
+				var superType = function(name) {
+					this.name = name;
+					this.color = ["red", "blue", "yellow"];
+					};
+				superType.prototype.sayName = function() {
+					alert(this.name);
+					};
+					
+				var subType = function(name, age) {
+					superType.call(this, name);
+					this.age = age;
+					};
+				
+				subType.prototype = new superType();				
+				subType.prototype.sayAge = function() {
+					alert(this.age);
+					};					
+				var instance1 = new subType("Jack", 28);
+				instance1.color.push("black");
+				alert(instance1.color);
+				
+				instance1.sayName();
+				instance1.sayAge();
+			</script>
+		</body>
+	</html>

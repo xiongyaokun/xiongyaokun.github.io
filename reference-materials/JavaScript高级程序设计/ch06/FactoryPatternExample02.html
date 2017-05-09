@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+	<html lang = "en">
+		<head>
+			<title>Dynamic Prototype Pattern Example 01</title>
+			<meta charset = "UTF-8">
+		</head>
+		<body>
+			<script>
+				function createPerson(name, age, job) {
+					this.name = name;
+					this.age = age;
+					this.job = job;
+					this.sayName = function() {
+						alert(this.name);
+					}
+				};
+				
+				var per1 = new createPerson("Nichaloas", 27, "Engineer");
+				var per2 = new createPerson("Green", 28, "Stuent");
+				
+				per1.sayName();
+				per2.sayName();
+			</script>
+		</body>
+	</html>

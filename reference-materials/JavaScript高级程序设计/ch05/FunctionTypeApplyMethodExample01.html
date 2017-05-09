@@ -1,0 +1,21 @@
+<DOCTYPE html>
+	<html>
+		<head>
+			<title>Array Type Example 09</title>
+		</head>
+		<body>
+			<script>
+				var sum = function (num1, num2) {
+					return num1 + num2;
+				};
+				var callSum1 = function (num1,num2) {
+					return sum.apply(this, arguments);
+				};
+				var callSum2 = function (num1, num2) {
+					return sum.apply(this, [num1, num2]);
+				};
+				alert(callSum1(10, 10));
+				alert(callSum2(10, 10));
+			</script>
+		</body>
+	</html>

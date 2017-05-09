@@ -1,0 +1,19 @@
+<DOCTYPE html>
+	<html>
+		<head>
+			<title>Array Type Arguments Caller Example 01</title>
+		</head>
+		<body>
+			<script>
+				function outer () {
+					inner()
+					
+				}
+				function inner () {
+					alert(arguments.callee.caller);
+				}
+//				alert(outer());
+				outer();
+			</script>
+		</body>
+	</html>
