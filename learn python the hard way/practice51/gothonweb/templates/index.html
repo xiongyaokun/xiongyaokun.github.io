@@ -1,0 +1,18 @@
+$def with (greeting)
+<!-- 声明一个传入的变量，而且只能在首行!-->
+
+$if greeting:
+    I just wanted to say <em style="color:green; font-size:2em;">$greeting</em>.
+$else:
+    <em>Hello</em>, world!
+
+
+<h1>Fill Out This Form</h1>
+
+<form action="/hello" method="post">
+    A Greeting:<input type="text" name="greet">
+    <br>
+    Your name:<input type="text" name="name">
+    <br>
+    <input type="submit">
+</form>
